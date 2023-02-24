@@ -10,6 +10,7 @@ from global_const import COL_NAMES
 from utils.data_processing import csv_to_df
 from utils.data_processing import coordinate_to_box
 
+
 class BirdDataset(torch.utils.data.Dataset):
     ''' Container for bird dataset '''
     def __init__(self, files, transforms=None):
@@ -34,6 +35,7 @@ class BirdDataset(torch.utils.data.Dataset):
             height = frame.iloc[row_idx]['height']
             boxes.append(coordinate_to_box(x_1, y_1, width, height))
         boxes = torch.as_tensor(boxes, dtype=torch.float32)
+        
         target = {}
         target['boxes'] = boxes
         # target['labels'] = labels
