@@ -4,7 +4,6 @@ torchvision.models.detection.faster_rcnn
 '''
 
 import torch
-import torch.utils.data
 from PIL import Image
 from global_const import COL_NAMES
 from utils.data_processing import csv_to_df
