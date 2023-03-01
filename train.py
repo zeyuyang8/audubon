@@ -106,4 +106,5 @@ def train_model(model, optimizer, trainloader, testloader, n_epochs, device):
             optimizer.zero_grad()
             losses.backward()
             optimizer.step()
-        print("Epoch:", epoch, "| Loss:", epoch_loss)
+        print("Epoch:", epoch + 1, "| Loss:", epoch_loss)
+        print()
