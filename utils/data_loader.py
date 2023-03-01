@@ -5,9 +5,9 @@ torchvision.models.detection.faster_rcnn
 
 import torch
 from PIL import Image
-from utils.global_const import COL_NAMES
-from utils.data_processing import csv_to_df
-from utils.data_processing import coordinate_to_box
+from audubon.utils.global_const import COL_NAMES
+from audubon.utils.data_processing import csv_to_df
+from audubon.utils.data_processing import coordinate_to_box
 
 
 class BirdDataset(torch.utils.data.Dataset):

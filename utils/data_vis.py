@@ -4,8 +4,8 @@ Data visualization
 
 import matplotlib.pyplot as plt
 from matplotlib import patches
-from utils.data_processing import csv_to_df
-from utils.global_const import COL_NAMES, SAVE_FIG, DPI
+from audubon.utils.data_processing import csv_to_df
+from audubon.utils.global_const import COL_NAMES, SAVE_FIG, DPI
 
 #######################################################################################
 # Data visualization
