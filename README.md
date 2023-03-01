@@ -8,6 +8,7 @@ The Python version is 3.8.16 and I installed required packages using the followi
 pip install numpy
 pip install pandas
 pip install matplotlib
+pip install tqdm
 pip3 install torch torchvision 
 ```
 
