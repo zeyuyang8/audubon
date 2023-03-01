@@ -4,7 +4,7 @@ torchvision.models.detection.faster_rcnn
 '''
 
 import torch
-import tqdm
+from tqdm import tqdm
 import torchvision
 from PIL import Image
 from torchvision.transforms import functional as F
@@ -95,7 +95,7 @@ def train_model(model, optimizer, trainloader, testloader, n_epochs, device):
     for epoch in range(n_epochs):
         model.train()
         epoch_loss = 0
-        for batch, (images, targets) in enumerate(trainloader):
+        for batch, (images, targets) in enumerate(tqdm(trainloader, desc=f"Epoch {epoch + 1} of {n_epochs}", leave=True, ncols=80)):
             images = list(image.to(device) for image in images)
             targets = [{key: val.to(device) for key, val in target.items()} for target in targets]
 
