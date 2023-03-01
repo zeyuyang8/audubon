@@ -6,7 +6,6 @@ from PIL import Image
 # Resource paths
 PLOTS_PATH = "plots/"
 DATA_PATH = "/Users/zeyuyang/Datasets/Audubon/"
-UTILS_PATH = "utils/"
 
 # Constants saving information
 FILES = {}
