@@ -15,3 +15,17 @@ The dataset should contain a list of JPG image files and CSV files.
 
 ## Execution
 Open the [Colab link](https://colab.research.google.com/drive/1ogZnN_sZZRnXpQUwGrUWN_TZSoqCccks?usp=sharing) and run the notebook.
+
+## TODO
+- Understand the feature representations of Faster RCNN.
+- Build a hierachical classifier.
+- Build a ResNet multi-class classifier.
+- Compare multi-class classifier with hierachical classifier.
+
+
+## Comments
+We can extract feature layers from the following types of model:
+
+1. Bird-only detector
+2. Visual-class detector (only big groups)
+3. Multi-class detector (all species)
