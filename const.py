@@ -3,10 +3,6 @@ Constants for the project
 '''
 from PIL import Image
 
-# Resource paths
-PLOTS_PATH = "plots/"
-DATA_PATH = "/Users/zeyuyang/Datasets/Audubon/"
-
 # Constants saving information
 FILES = {}
 FRAMES = {}
