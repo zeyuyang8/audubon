@@ -21,6 +21,7 @@ Open the [Colab link](https://colab.research.google.com/drive/1ogZnN_sZZRnXpQUwG
 - Build a hierachical classifier.
 - Build a ResNet multi-class classifier.
 - Compare multi-class classifier with hierachical classifier.
+- Learn https://lost.training/
 
 
 ## Comments
