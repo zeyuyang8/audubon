@@ -1,4 +1,5 @@
 ''' 
+Source for building an object detection model using PyTorch:
 https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html 
 torchvision.models.detection.faster_rcnn 
 '''
@@ -35,7 +36,10 @@ class BirdDataset(torch.utils.data.Dataset):
             idx: Index of the image and target data to retrieve.
 
         Returns:
-            A tuple containing the image data and target dictionary for the given index.
+            A tuple containing a Tensor Image and target dictionary for the given index.
+            
+            Tensor Image is a Pytorch tensor with (C, H, W) shape, where C is a number of channels, H and W are image height and width. 
+            
             The target dictionary contains the following keys:
                     - 'boxes': A PyTorch tensor containing the bounding boxes for each object in the image. The four values represent (x_min, y_min, x_max, y_max)
                                coordinates of the bounding box.
@@ -87,33 +91,61 @@ class BirdDataset(torch.utils.data.Dataset):
         return len(self.img_files)
     
 def bird_collate_fn(batch):
-    ''' Important for object detection '''
+    ''' 
+    Collate function helps PyTorch's DataLoader stack images and targets in batches of consistant size and shape, facilitating more efficient 
+    object detection.
+    
+    Input:
+        Batch of Tensor Images is a tensor of (B, C, H, W) shape, where B is a number of images in the batch.  
+    Output:
+        A tuple of two lists:
+            1. The first contains the images in the batch, stacked into a tensor of shape (N, C, H, W), where N is the batch size. 
+            2. The second list contains the targets in the batch, where each target is a dictionary with the same keys as the input.
+    '''
     return tuple(zip(*batch))
 
 def get_bird_dataloaders(train_files, test_files):
-    # use our dataset and defined transformations
+    '''
+    Returns the dataloaders for the train and test datasets.
+  
+    Input:
+        train_files: A dictionary containing paths for the training images and CSV files.
+        test_files: A dictionary containing paths for the test images and CSV files.
+    
+    Output:
+        trainloader: A dataloader for the training data.
+        testloader: A dataloader for the test data.
+    '''
+    # Use our dataset and defined transformations
     trainset = BirdDataset(train_files, F.to_tensor)
     trainloader = torch.utils.data.DataLoader(
         trainset, batch_size=2, shuffle=True, num_workers=4,
-        collate_fn=bird_collate_fn # important otherwise it raises an error
+        collate_fn=bird_collate_fn # Set collate function to our custom function
     ) 
 
     testset = BirdDataset(test_files, F.to_tensor)
     testloader = torch.utils.data.DataLoader(
         testset, batch_size=1, shuffle=False, num_workers=4,
-        collate_fn=bird_collate_fn # important otherwise it raises an error
+        collate_fn=bird_collate_fn 
     ) 
     return trainloader, testloader
 
-def get_model_and_optim(chioce='fasterrcnn_resnet50_fpn'):
-    if chioce == 'fasterrcnn_resnet50_fpn':
+def get_model_and_optim(choice='fasterrcnn_resnet50_fpn'):
+    '''
+    Input:
+        choice: model choice (we will be using faster R-CNN with a ResNet50 backbone
+    Output:
+        model: A pre-trained faster R-CNN model using a ResNet50 backbone network
+        optimizer: a stochastic gradient descent (SGD) optimizer with learning rate 0.005, momentum 0.9, and weight decay 0.0005
+    '''
+    if choice == 'fasterrcnn_resnet50_fpn':
         model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights='DEFAULT')
     params = [param for param in model.parameters() if param.requires_grad]
     optimizer = torch.optim.SGD(params, lr=0.005, momentum=0.9, weight_decay=0.0005)
     return model, optimizer
 
 def train_model(model, optimizer, trainloader, testloader, n_epochs, device):
-    ''' Train a model '''
+    ''' Train a model and print loss for each epoch '''
     model = model.to(device)
     for epoch in range(n_epochs):
         model.train()
