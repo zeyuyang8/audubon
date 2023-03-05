@@ -12,15 +12,14 @@ from audubon.const import COL_NAMES, SAVE_FIG, DPI
 
 def get_cmap(num, name='tab20c'):
     '''
-    Returns a function that maps each index in 0, 1, ..., n-1 to a distinct 
-    RGB color; the keyword argument name must be a standard mpl colormap name.
+    Return a function that maps each index in 0, 1, ..., n-1 to a distinct RGB color
     '''
     return plt.cm.get_cmap(name, num)
 
 def plot_distribution(data_frame, col_name, 
                       info, path, filt=None):
     ''' 
-    Plots a barchart of the value counts for a column in a dataframe.
+    Plot a barchart of the value counts of a column in a dataframe.
     
     Input:
         data_frame : Pandas dataframe containing the column to plot.
@@ -43,6 +42,7 @@ def plot_distribution(data_frame, col_name,
     cmap = get_cmap(len(idx_list))
     color_list = [cmap(idx) for idx in range(len(idx_list))]
 
+    # make plot
     fig, axs = plt.subplots(figsize=(10, 6))
     chart = axs.barh(idx_list, val_list, color=color_list)
     axs.set_title(title)
@@ -56,7 +56,7 @@ def plot_distribution(data_frame, col_name,
 
 def plot_boxes(jpg_name, bbx_name, title, path):
     ''' 
-    Plots an image overlaid with annotation boxes.
+    Plot an image overlaid with annotation boxes.
     
     Input:
         jpg_name : The filename of the image file to be plotted.
@@ -70,11 +70,12 @@ def plot_boxes(jpg_name, bbx_name, title, path):
     num_row, num_col, dummy_channel = image.shape
     annos = csv_to_df(bbx_name, COL_NAMES).to_dict()
 
+    # plot image
     fig, axs = plt.subplots(figsize=(num_col / DPI, num_row / DPI), dpi=DPI)  
     axs.imshow(image, origin='lower')
     axs.set_axis_off()
     axs.set_title(title)
-    # draw rectangles
+    # draw bounding boxes (rectangles)
     for idx in range(len(annos["x"])):
         rect = patches.Rectangle((annos["x"][idx], annos["y"][idx]), 
             annos["width"][idx], annos["height"][idx], 
