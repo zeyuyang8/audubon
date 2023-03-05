@@ -11,13 +11,27 @@ from audubon.const import COL_NAMES, SAVE_FIG, DPI
 # Data visualization
 
 def get_cmap(num, name='tab20c'):
-    '''Returns a function that maps each index in 0, 1, ..., n-1 to a distinct 
-    RGB color; the keyword argument name must be a standard mpl colormap name.'''
+    '''
+    Returns a function that maps each index in 0, 1, ..., n-1 to a distinct 
+    RGB color; the keyword argument name must be a standard mpl colormap name.
+    '''
     return plt.cm.get_cmap(name, num)
 
 def plot_distribution(data_frame, col_name, 
                       info, path, filt=None):
-    ''' Plot a barchart for a column in a dataframe '''
+    ''' 
+    Plots a barchart of the value counts for a column in a dataframe.
+    
+    Input:
+        data_frame : Pandas dataframe containing the column to plot.
+        col_name : The name of the column to plot.
+        info : A tuple containing the x-label, y-label, and title of the plot.
+        path : The directory in which to save the plot.
+        filt : int or None. If not None, only show categories with a count of at least `filt`.
+    
+    Output:
+        A barchart of the value counts for the specified column. 
+    '''
     x_label, y_label, title = info
     plt.rcdefaults()
     val_counts = data_frame[col_name].value_counts()
@@ -41,7 +55,17 @@ def plot_distribution(data_frame, col_name,
     return fig
 
 def plot_boxes(jpg_name, bbx_name, title, path):
-    ''' Plot image with annotated boxes '''
+    ''' 
+    Plots an image overlaid with annotation boxes.
+    
+    Input:
+        jpg_name : The filename of the image file to be plotted.
+        bbx_name : The filename of the CSV file containing the bounding box coordinates.
+        title : The title of the plot.
+        path : The path where the resulting image file will be saved.
+    Output:
+        A plot of the image overlaid with annotation boxes.
+    '''
     image = plt.imread(jpg_name)
     num_row, num_col, dummy_channel = image.shape
     annos = csv_to_df(bbx_name, COL_NAMES).to_dict()
