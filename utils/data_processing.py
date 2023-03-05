@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 def get_file_names(path, extension):
     ''' 
-    Get a sorted list of file names that match the specified file extension in the given directory.
+    Return a sorted list of file names that match the specified file extension in the given directory.
     
     Input:
         path : Directory path to search for files (in string format).
@@ -57,9 +57,9 @@ def read_jpg(file_name):
     Read a JPG file and save it to a numpy array.
     
     Input:
-        file_name: A string that is the JPG file name.
+        file_name: A JPG file name (in string format).
     Output:
-        A numpy array containing RGB values of the JPG image.
+        A numpy array containing the RGB values of the JPG image.
     '''
     image = plt.imread(file_name)
     # print(image.shape)
@@ -89,9 +89,9 @@ def split_img_annos(img_files, anno_files, frac, seed=None):
         anno_files : List of annotation file paths.
         frac : A tuple of three floats that specifies the fraction of data to be used for training, testing, and validation.
     Output:
-        A list of three dictionaries, where each dictionary contains the following keys:
-            - 'jpg': a list of image file paths for that set
-            - 'csv': a list of annotation file paths for that set
+        A list of three dictionaries, one for training, testing and validation respectively, where each dictionary contains the following keys:
+            - 'jpg': a list of image file paths for the set.
+            - 'csv': a list of annotation file paths for the set.
     '''
     if seed:
         np.random.seed(seed)
@@ -132,4 +132,4 @@ def coordinate_to_box(x_1, y_1, width, height):
 
 def cropping():
     ''' Crop image bird only and resize into fixed shape '''
-    pass
+    pass #Still need to create
