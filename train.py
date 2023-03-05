@@ -35,8 +35,8 @@ class BirdDataset(torch.utils.data.Dataset):
         Parameters:
             idx: Index of the image and target data to retrieve.
 
-        Returns:
-            A tuple containing a Tensor Image and target dictionary for the given index.
+        Output:
+            img, target: A tuple containing a Tensor Image and target dictionary for the given index.
             
             Tensor Image is a Pytorch tensor with (C, H, W) shape, where C is a number of channels, H and W are image height and width. 
             
