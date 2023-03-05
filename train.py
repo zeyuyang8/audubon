@@ -16,11 +16,34 @@ from audubon.utils.data_processing import coordinate_to_box
 class BirdDataset(torch.utils.data.Dataset):
     ''' Container for bird dataset '''
     def __init__(self, files, transforms=None):
+        '''
+        Initializes the class instance with image and CSV file names.
+        
+        Parameters:
+            files: A dictionary with keys 'jpg' and 'csv' that contain lists of file paths.
+            transforms: A callable that takes in an image and applies some transformation to it, or None.
+        '''
         self.img_files = files['jpg']
         self.csv_files = files['csv']
         self.transforms = transforms
 
     def __getitem__(self, idx):
+        '''
+        Retrieves the image and target data corresponding to a given index. 
+        
+        Parameters:
+            idx: Index of the image and target data to retrieve.
+
+        Returns:
+            A tuple containing the image data and target dictionary for the given index.
+            The target dictionary contains the following keys:
+                    - 'boxes': A PyTorch tensor containing the bounding boxes for each object in the image. The four values represent (x_min, y_min, x_max, y_max)
+                               coordinates of the bounding box.
+                    - 'labels': A PyTorch tensor containing the class labels for each object in the image. For the bird-only detector, there is only one class.
+                    - 'image_id': A PyTorch tensor containing the unique identifier for the image.
+                    - 'area': A PyTorch tensor containing the area of each bounding box. 
+                    - 'iscrowd': A PyTorch tesor containing booleans for whether each object is a crowd. We will assume each instance is not a crowd. 
+        '''
         # file path
         img_path, csv_path = self.img_files[idx], self.csv_files[idx]
         
@@ -39,7 +62,7 @@ class BirdDataset(torch.utils.data.Dataset):
             boxes.append(coordinate_to_box(x_1, y_1, width, height))
         boxes = torch.as_tensor(boxes, dtype=torch.float32)
         
-        # bird only detector, there is only one class 
+        # For bird-only detector, there is only one class 
         labels = torch.ones((num_objs,), dtype=torch.int64)
         image_id = torch.tensor([idx])
         area = (boxes[:, 3] - boxes[:, 1]) * (boxes[:, 2] - boxes[:, 0])
