@@ -12,7 +12,13 @@ import matplotlib.pyplot as plt
 
 def get_file_names(path, extension):
     ''' 
-    Get a list of file names with certain extension in the folder dir.
+    Get a sorted list of file names that match the specified file extension in the given directory.
+    
+    Input:
+        path : Directory path to search for files (in string format).
+        extension : File extension to match (in string format).
+    Output:
+        A sorted list of file names that match the specified file extension.
     '''
     file_names = []
     for file in os.listdir(path):
@@ -22,39 +28,70 @@ def get_file_names(path, extension):
 
 def csv_to_df(file_name, cols):
     ''' 
-    Read a CSV file and save it to a dataframe.
+    Read a CSV file and save it to a pandas dataframe.
+    
     Input:
-        file_name - a string that is the file name
-    Returns a dataframe containing rows in the CSV file, and the first row is the header.
+        file_name: Name of the CSV file to read (in string format).
+        cols: List of column names to use for the dataframe.
+    Output: 
+        A pandas dataframe containing rows in the CSV file, and the first row is the header.
     '''
     data_df = pd.read_csv(file_name, header=0, names=cols)
     return data_df
 
 def concat_frames(file_names, cols):
-    ''' Concat dataframes saved in a list of file names into a single dataframe. ''' 
+    ''' 
+    Concatenate dataframes saved in a list of file names into a single pandas dataframe. 
+    
+    Input:
+        file_names: A list of CSV file names (strings) to read and concatenate.
+        cols: List of column names to use for the dataframe.
+    Output:
+        A pandas dataframe containing rows from all the concatenated CSV files
+    ''' 
     frames = [csv_to_df(file_name, cols) for file_name in file_names]
     return pd.concat(frames, axis=0, ignore_index=True)
 
 def read_jpg(file_name):
     ''' 
-    Read a JPG file and save it to a np array.
+    Read a JPG file and save it to a numpy array.
+    
     Input:
-        file_name - a string that is the file name
-    Returns a np array containing RGB values of the image.
+        file_name: A string that is the JPG file name.
+    Output:
+        A numpy array containing RGB values of the JPG image.
     '''
     image = plt.imread(file_name)
     # print(image.shape)
     return image
 
 def add_col(frame, added_col_name, col_name, values_dict):
-    "Add a column to a dataframe based on a mapping dictionary. "
+    '''
+    Add a column to a pandas dataframe by mapping values from an existing column using a dictionary. 
+    
+    Input:
+        frame: An existing pandas dataframe.
+        added_col_name: The name of the new column (string).
+        col_name: The name of the existing column to map values from (string).
+        values_dict: Dictionary that maps values from existing columns to values in new column.
+    Output:
+        Pandas dataframe with the new column added.
+    '''
     frame[added_col_name] = frame[col_name].map(values_dict)
     return frame
 
 def split_img_annos(img_files, anno_files, frac, seed=None):
     ''' 
-    Split the data into three parts 
-    Copy the files into output path
+    Split the image and annotation files into three sets (training, testing, and validation) based on a given fraction.
+
+    Input:
+        img_files : List of image file paths.
+        anno_files : List of annotation file paths.
+        frac : A tuple of three floats that specifies the fraction of data to be used for training, testing, and validation.
+    Output:
+        A list of three dictionaries, where each dictionary contains the following keys:
+            - 'jpg': a list of image file paths for that set
+            - 'csv': a list of annotation file paths for that set
     '''
     if seed:
         np.random.seed(seed)
@@ -77,7 +114,17 @@ def split_img_annos(img_files, anno_files, frac, seed=None):
     return train_test_val
 
 def coordinate_to_box(x_1, y_1, width, height):
-    ''' Compute box coordinate ''' 
+    ''' 
+    Convert object coordinates to bounding box coordinates
+    
+    Input:
+        x_1: The x coordinate of the top left corner of the object (int)
+        y_1: The y coordinate of the top left corner of the object (int)
+        width: The width of the object (int)
+        height: The height of the object (int)
+    Output:
+        A list containing bounding box coordinates [x_min, y_min, x_max, y_max]
+    ''' 
     x_2, y_2 = x_1 + width, y_1 + height
     box = [x_1, y_1, x_2, y_2]
 
