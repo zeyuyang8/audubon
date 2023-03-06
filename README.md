@@ -1,4 +1,4 @@
-# Audubon
+# D2K Team Audubon Spring 2023
 
 ## Project description
 Houston Audubon uses drone photography to monitor populations of colonial waterbirds in the Texas Gulf Coast. Researchers need to comb through drone images and manually count up birds by species class, which can take weeks for even one high resolution image. Seeking to automate this process, Houston Audubon partnered with the Data to Knowledge (D2K) lab at Rice University. Student teams have developed an object detection based deep learning model that can automatically detect birds within a UAV image and classify their species. This semester, we are continuing the project with two main objecitves:
@@ -14,6 +14,8 @@ The following open source packages are used in this project:
   - tqdm
 
 ## Folder structure
+code
+.
 ├──utils
 ├──────data_processsing.py
 ├──────data_vis.py
@@ -29,14 +31,18 @@ The following open source packages are used in this project:
   git clone https://github.com/RiceD2KLab/Audubon_F21.git
   ```
   <li><b>Install Pytorch</b></li>
-<a href="https://pytorch.org/get-started/locally/">Installation instructions here</a> <br>
+
+  <a href="https://pytorch.org/get-started/locally/">Installation instructions here</a> <br>
+  
   Requirements: Linux or macOS with Python ≥ 3.6
-  ```
+  
+  ```linux
   pip3 install torch==1.10.0+cu102 torchvision==0.11.1+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html
   ```
   <li>Install other dependencies</li>
 
   The Python version is 3.8.16 and users can install the required packages using the following command:
+  
   ```linux
   pip install requirements.txt
   ```
