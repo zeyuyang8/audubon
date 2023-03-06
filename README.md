@@ -16,17 +16,11 @@ The following open source packages are used in this project:
 ## Folder structure
  
   ├──utils
-  
   ├──────data_processsing.py
-  
   ├──────data_vis.py
-  
   ├──README.md
-  
   ├──const.py
-  
   ├──requirements.txt
-  
   ├──train.py
 
 ## Installation instructions
@@ -44,6 +38,7 @@ The following open source packages are used in this project:
   ```linux
   pip3 install torch==1.10.0+cu102 torchvision==0.11.1+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html
   ```
+  
   <li>Install other dependencies</li>
 
   The Python version is 3.8.16 and users can install the required packages using the following command:
