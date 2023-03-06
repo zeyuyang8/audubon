@@ -15,19 +15,13 @@ The following open source packages are used in this project:
 
 ## Folder structure
  
-  ├──utils
-  
-  ├──────data_processsing.py
-  
-  ├──────data_vis.py
-  
-  ├──README.md
-  
-  ├──const.py
-  
-  ├──requirements.txt
-  
-  ├──train.py
+  - utils
+    - data_processsing.py
+    - data_vis.py
+  - README.md
+  - const.py
+  - requirements.txt
+  - train.py
 
 ## Installation instructions
 <li><b>Clone the repository<b></li>
