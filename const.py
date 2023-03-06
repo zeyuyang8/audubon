@@ -24,5 +24,9 @@ GROUPS = {"BRPE": ["BRPEA", "BRPEC", "BRPEJ", "BRPEW", "BRPEF"],
           "OTHR": ["OTHRA"],
           "TRSH": ["TRASH"],
         }
+GROUP_NAMES = {"BRPE" : "Brown Pelican", "LAGU" : "Laughing Gull", 
+               "BLSK" : "Black Skimmer", "MTRN" : "Mixed Tern",
+               "LGHT" : "Large Light Bird", "DARK" : "Large Dark Bird",
+               "OTHR" : "Other", "TRSH": "Trash"}
 # I put "REEGA", "REEGF", "REEGC" into "DARK" but I am not sure
 # Not sure about "CAEGA", "CAEGF", "MEGRT", "TCHEA", "AMAVA", "DCCOA", "AMOYA"
