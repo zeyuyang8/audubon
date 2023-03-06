@@ -14,15 +14,20 @@ The following open source packages are used in this project:
   - tqdm
 
 ## Folder structure
-code
-.
-├──utils
-├──────data_processsing.py
-├──────data_vis.py
-├──README.md
-├──const.py
-├──requirements.txt
-├──train.py
+ 
+  ├──utils
+  
+  ├──────data_processsing.py
+  
+  ├──────data_vis.py
+  
+  ├──README.md
+  
+  ├──const.py
+  
+  ├──requirements.txt
+  
+  ├──train.py
 
 ## Installation instructions
 <li>Clone the repository</li>
