@@ -24,12 +24,13 @@ The following open source packages are used in this project:
   - train.py
 
 ## Installation instructions
-<li><b>Clone the repository<b></li>
+
+ ### Clone the repository
 
   ```linux
   git clone https://github.com/RiceD2KLab/Audubon_F21.git
   ```
-  <li><b>Install Pytorch</b></li>
+ ### Install Pytorch
 
   <a href="https://pytorch.org/get-started/locally/">Installation instructions here</a> <br>
   
@@ -39,7 +40,7 @@ The following open source packages are used in this project:
   pip3 install torch==1.10.0+cu102 torchvision==0.11.1+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html
   ```
   
-  <li><b>Install other dependencies<b></li>
+ ### Install other dependencies
 
   The Python version is 3.8.16 and users can install the required packages using the following command:
   
