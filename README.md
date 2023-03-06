@@ -32,7 +32,7 @@ pip3 install torch torchvision
 ```
 
 ## Usage instructions
-Open the [Colab link](https://colab.research.google.com/drive/1ogZnN_sZZRnXpQUwGrUWN_TZSoqCccks?usp=sharing) and run the notebook.
+Open the [Colab link](https://colab.research.google.com/drive/1wU5k5jI9TlPWy3CzXb4gabZ__YB-Cp97?usp=sharing) and run the notebook.
 
 ## TODO
 - Understand the feature representations of Faster RCNN.
