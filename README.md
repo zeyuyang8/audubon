@@ -31,8 +31,7 @@ The following open source packages are used in this project:
   <li><b>Install Pytorch</b></li>
 <a href="https://pytorch.org/get-started/locally/">Installation instructions here</a> <br>
   Requirements: Linux or macOS with Python ≥ 3.6
-
-  ```linux
+  ```
   pip3 install torch==1.10.0+cu102 torchvision==0.11.1+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html
   ```
   <li>Install other dependencies</li>
@@ -41,10 +40,6 @@ The following open source packages are used in this project:
   ```linux
   pip install requirements.txt
   ```
-
-  <li>Execute the scripts as required.</li>
-
-```
   
 ## Data Science Pipeline
 
