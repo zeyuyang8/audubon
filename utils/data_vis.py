@@ -54,7 +54,7 @@ def plot_distribution(data_frame, col_name,
         fig.savefig(path + title + '.pdf')
     return fig
 
-def plot_boxes(jpg_name, bbx_name, title, path):
+def plot_boxes(jpg_name, bbx_name, title, path, show=False):
     ''' 
     Plot an image overlaid with annotation boxes.
     
@@ -63,6 +63,7 @@ def plot_boxes(jpg_name, bbx_name, title, path):
         bbx_name : The filename of the CSV file containing the bounding box coordinates.
         title : The title of the plot.
         path : The path where the resulting image file will be saved.
+        show : Whether to plot the image. Default is no (False).
     Output:
         A plot of the image overlaid with annotation boxes.
     '''
@@ -84,4 +85,6 @@ def plot_boxes(jpg_name, bbx_name, title, path):
 
     if SAVE_FIG:
         fig.savefig(path + title + '.jpg')
+    if show == True:
+        fig.show()
     return fig
