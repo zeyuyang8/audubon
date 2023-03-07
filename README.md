@@ -78,7 +78,11 @@ Each annotated UAV image has a corresponding CSV file containing bird annotation
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## Bird detector usage instructions
-Open the [Colab link](https://colab.research.google.com/drive/1wU5k5jI9TlPWy3CzXb4gabZ__YB-Cp97?usp=sharing) and run the demonstration notebook.
+Currently, we have completed the data processing, data exploration and train/test/split steps of our pipeline. We are working on data wrangling for the bird detection and species classification models. We have created a basic bird detector model, but we still need to optimize the model by using data wrangling techniques and tuning hyperparameters. 
+
+We have created a demonstration notebook containing steps for data preprocessing, data exploration, train/test/split, and training the bird detector. 
+
+Open the [Colab link](https://colab.research.google.com/drive/1wU5k5jI9TlPWy3CzXb4gabZ__YB-Cp97?usp=sharing) to run the demonstration notebook.
 
 ## TODO
 - Understand the feature representations of Faster RCNN.
