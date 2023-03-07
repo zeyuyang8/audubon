@@ -59,7 +59,7 @@ The following open source packages are used in this project:
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## Data Science Pipeline
-![alt text](https://github.com/zeyuyang8/audubon/main/pipeline.pdf)
+<img src="pipeline.png">
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
